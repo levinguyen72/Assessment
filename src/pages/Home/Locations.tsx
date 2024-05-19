@@ -6,7 +6,7 @@ import { formatDateSingapore } from '~/helpers';
 
 export default function Locations() {
 
-  const { updateWeatherForcastData, setActiveLocation, weatherForcastData } = useWeatherForecastDateStore();
+  const { updateWeatherForcastData, setActiveLocation, weatherForcastData, activeLocation } = useWeatherForecastDateStore();
   const { dateTimeSelected, dateSelected } = useDateTimeStore();
 
   const fetchWeatherByLocation = async () => {
@@ -28,7 +28,7 @@ export default function Locations() {
   return (
     <>
       <h2 className='text-2xl' >Locations</h2>
-      <div className="location-list overflow-y-auto h-96 rounded">
+      <div className="overflow-y-auto lg:h-96 md:h-[300px] rounded">
         <div className="w-full text-gray-900 bg-white border border-gray-200 rounded-lg p-3">
           {
             weatherForcastData?.length && weatherForcastData.map(location => (
@@ -36,7 +36,7 @@ export default function Locations() {
                 key={nanoid()} 
                 type="button" 
                 onClick={() => handleActiveLocation(location)}
-                className="relative inline-flex items-center w-full px-4 py-2 text-sm font-medium rounded-b-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700">
+                className={`relative inline-flex items-center w-full px-4 py-2 text-sm font-medium hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 ${location?.area === activeLocation?.area ? `text-blue-700 bg-gray-100` : ''}`}>
                 {location?.area}
               </button>
             ))

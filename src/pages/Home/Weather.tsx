@@ -8,10 +8,10 @@ export default function Weather() {
   return (
     <div className='h-full'>
       <h2 className="text-2xl">Weather</h2>
-      <div className="location-list overflow-y-auto rounded h-96 w-100">
+      <div className="location-list overflow-y-auto rounded lg:h-96 md:h-max w-100 flex flex-col justify-center">
         <div className="w-full text-gray-900 bg-white border border-gray-200 rounded-lg p-3 h-full">
-          {activeLocation?.area} - {activeLocation?.forecast}
-          <img src={generateWeatherIcon(activeLocation?.forecast)} />
+          <div className='' >{activeLocation?.area} - {activeLocation?.forecast}</div>
+          <img className='w-[200px] ' src={generateWeatherIcon(activeLocation?.forecast)} />
         </div>
       </div>
     </div>

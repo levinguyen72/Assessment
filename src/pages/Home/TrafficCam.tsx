@@ -24,11 +24,11 @@ export default function TrafficCam() {
 					<div className="screenshot">
 						{
 							traficImageData.length ?
-							(<div className="list-image flex flex-row flex-wrap">
+							(<div className="list-image flex flex-row flex-wrap h-[500px] overflow-y-auto">
 								{
 									traficImageData.map(item => ( 
 										<div key={nanoid()} className="traffic-image">
-											<img className='w-[300px]' src={item?.image} />
+											<img className='lg:w-[300px] md:w-[250px]' src={item?.image} />
 										</div>
 									))
 								}

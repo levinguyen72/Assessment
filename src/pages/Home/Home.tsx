@@ -28,8 +28,6 @@ export default function Home() {
   useEffect(() => {
     updateDateSelected(date)
   }, [date])
-	console.log('updateDateSelected', dateSelected, timeSelected)
-	console.log('updateDatetineSelected', dateTimeSelected)
 
   return (
     <>
@@ -97,10 +95,10 @@ export default function Home() {
       <div className='bg-[#f4f3f3]' >
 				<div className='mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8' >
 					<div className='weather flex lg:flex-row md:flex-col sm:flex-col' >
-						<div className='location-list w-2/3' >
+						<div className='location-list lg:w-2/3 md:w-full' >
 							<Locations/>
 						</div>
-						<div className='weather w-1/3' >
+						<div className='weather lg:w-1/3 md:w-full' >
 							<Weather/>
 						</div>
 					</div>	

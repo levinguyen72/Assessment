@@ -28,7 +28,7 @@ export default function Locations() {
   return (
     <>
       <h2 className='text-2xl' >Locations</h2>
-      <div className="overflow-y-auto lg:h-96 md:h-[300px] rounded">
+      <div className="overflow-y-auto lg:h-96 md:h-[300px] sm:h-[200px] rounded">
         <div className="w-full text-gray-900 bg-white border border-gray-200 rounded-lg p-3">
           {
             weatherForcastData?.length && weatherForcastData.map(location => (

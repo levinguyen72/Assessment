@@ -95,10 +95,10 @@ export default function Home() {
       <div className='bg-[#f4f3f3]' >
 				<div className='mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8' >
 					<div className='weather flex lg:flex-row md:flex-col sm:flex-col' >
-						<div className='location-list lg:w-2/3 md:w-full' >
+						<div className='location-list lg:w-2/3 md:w-full sm:w-full' >
 							<Locations/>
 						</div>
-						<div className='weather lg:w-1/3 md:w-full' >
+						<div className='weather lg:w-1/3 md:w-full sm:w-full' >
 							<Weather/>
 						</div>
 					</div>	

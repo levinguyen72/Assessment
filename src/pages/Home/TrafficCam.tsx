@@ -28,7 +28,7 @@ export default function TrafficCam() {
 								{
 									traficImageData.map(item => ( 
 										<div key={nanoid()} className="traffic-image">
-											<img className='lg:w-[300px] md:w-[250px]' src={item?.image} />
+											<img className='lg:w-[300px] md:w-[250px] sm:w-[150px]' src={item?.image} />
 										</div>
 									))
 								}

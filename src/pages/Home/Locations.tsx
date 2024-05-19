@@ -1,19 +1,22 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { nanoid } from 'nanoid';
 import { getWeatherByLocation } from '~/services/getWeatherbyLocation'
-import { useWeatherForecastDateStore, locationData, useDateTimeStore } from '~/stores';
+import { useWeatherForecastDateStore, locationData, useDateTimeStore, useCommonStore } from '~/stores';
 import { formatDateSingapore } from '~/helpers';
 
 export default function Locations() {
 
   const { updateWeatherForcastData, setActiveLocation, weatherForcastData, activeLocation } = useWeatherForecastDateStore();
   const { dateTimeSelected, dateSelected } = useDateTimeStore();
+  const { openLoading } = useCommonStore();
 
   const fetchWeatherByLocation = async () => {
     const dateFormat = formatDateSingapore(dateSelected);
+    openLoading(true)
     let result = await getWeatherByLocation(dateTimeSelected, dateFormat);
     if(result && result.status == '200') {
       updateWeatherForcastData(result?.data?.items[0]?.forecasts);
+      openLoading(false)
     }
   }
 
@@ -28,7 +31,7 @@ export default function Locations() {
   return (
     <>
       <h2 className='text-2xl' >Locations</h2>
-      <div className="overflow-y-auto lg:h-96 md:h-[300px] sm:h-[200px] rounded">
+      <div className="overflow-y-auto lg:h-96 md:h-[300px] sm:h-[200px] rounded pt-3">
         <div className="w-full text-gray-900 bg-white border border-gray-200 rounded-lg p-3">
           {
             weatherForcastData?.length && weatherForcastData.map(location => (

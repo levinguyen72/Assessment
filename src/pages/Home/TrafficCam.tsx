@@ -1,16 +1,20 @@
 import { useEffect } from 'react'
 import Skeleton from '~/components/molecules/Skeleton'
 import { getTrafficImageData } from '~/services/getTrafficImage';
-import { useTrafficCamStore, useDateTimeStore } from '~/stores';
+import { useTrafficCamStore, useDateTimeStore, useCommonStore } from '~/stores';
 import { nanoid } from 'nanoid';
 
 export default function TrafficCam() {
 	const { dateTimeSelected } = useDateTimeStore();
   const { updateTrafficImageData, traficImageData } = useTrafficCamStore();
+	const { openLoading } = useCommonStore();
+
   const fetchTrafficImage = async () => {
-    const response = await getTrafficImageData(dateTimeSelected)
+		openLoading(true)
+    const response = await getTrafficImageData(dateTimeSelected);
 		if(response && response?.status == '200') {
 			updateTrafficImageData(response?.data?.items[0]?.cameras)
+			openLoading(false)
 		}
   }
 

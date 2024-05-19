@@ -17,7 +17,7 @@ export const useDateTimeStore = create<dateTimeStore>((set) => ({
   updateDateSelected: (date) => 
     set((state) => ({
       dateSelected: date,
-      dateTimeSelected: formatDateTime(state.dateSelected, state.timeSelected)
+      dateTimeSelected: formatDateTime(date, state.timeSelected)
     })),
   updateTimeSelected: (time) => 
     set((state) => ({
